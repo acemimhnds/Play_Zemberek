@@ -1,0 +1,15 @@
+db/
+tmp/
+nbproject/
+eclipse/
+precompiled/
+test-result/
+index/
+workspace/
+.metadata/
+.classpath
+.project
+.settings/
+lib/
+
+
