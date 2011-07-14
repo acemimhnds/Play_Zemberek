@@ -1,0 +1,13 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+#{list items:denetle, as:'item'}
+<ul>
+${Arrays.toString(item)}
+	
+</ul>
+#{/list}
+
+
+<a href="@{Application.index()}">Back to form</a>

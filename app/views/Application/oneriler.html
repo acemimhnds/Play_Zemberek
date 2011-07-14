@@ -1,0 +1,13 @@
+#{extends 'main.html' /} #{set title:'Home' /}
+<h1>Kelime için öneriler:</h1></br>
+
+#{list items:gecis, as:'item'}
+<ul>
+${Arrays.toString(item)}
+	
+</ul>
+#{/list}v
+
+
+
+<a href="@{Application.index()}">Back to form</a>

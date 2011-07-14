@@ -1,0 +1,38 @@
+#{extends 'main.html' /} #{set title:'Home' /}
+
+
+
+
+<h2>Cumleyi girelim :)</h2>
+
+
+
+
+
+ 
+  <form action="@{Application.kullanicidanAl()}" method="GET">
+  <input type="text"  name="cumle" /> 
+    <input type="submit" value="Islem yapılacak cumleyi girdim." />
+ </form> 
+
+#{if flash.error}
+    <p style="color:#c00">
+        ${flash.error}
+    </p>
+#{/if}    
+
+<a href="@{Application.heceler(cumle)}">Hecele </a></br>
+<a href="@{Application.kelimeAyristir(cumle)}">Kelime Ayristir</a></br>
+<a href="@{Application.kelimeCozumle(cumle)}"> Kelime  Cozumle</a></br>
+<a href="@{Application.kelimeDenetle(cumle)}"> Kelime Denetle</a></br>
+<a href="@{Application.oneriler(cumle)}"> Kelime Oner</a></br>
+<a href="@{Application.asciDonustur(cumle)}">ASCII'ya Donustur</a></br></br>
+
+
+
+
+
+
+
+
+
