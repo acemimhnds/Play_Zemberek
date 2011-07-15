@@ -1,7 +1,12 @@
-
-
 #{extends 'main.html' /} #{set title:'Home' /}
-<h1>Kelimenin hecelenmiş hali:</h1>
+<h1>Kelimenin hecelenmiş hali:</h1></br>
+<ul>
+#{list items:gecis, as:'heceler'}
+<li>
+${heceler.join('-')}
+</li>
+#{/list}
+</ul> 
 
 
 
