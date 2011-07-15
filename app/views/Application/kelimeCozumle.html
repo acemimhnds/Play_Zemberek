@@ -1,1 +1,9 @@
 #{extends 'main.html' /} #{set title:'Home' /}
+
+#{list items:cozumler, as:'item'}
+<ul>
+
+${Arrays.toString(item) }
+
+</ul>
+#{/list}
