@@ -1,9 +1,14 @@
 #{extends 'main.html' /} #{set title:'Home' /}
-
-#{list items:cozumler, as:'item'}
+<h1>Çözümleme sonuçları:</h1></br>
 <ul>
-
-${Arrays.toString(item) }
-
-</ul>
+#{list items:gecis, as:'cozum'}
+<li>
+#{list items:cozum, as:'cozumler'}
+${cozumler}
 #{/list}
+</li>
+#{/list}
+</ul> 
+
+
+	

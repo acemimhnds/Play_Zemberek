@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Collection;
 
 import net.zemberek.erisim.Zemberek;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
@@ -39,24 +40,31 @@ public class Application extends Controller {
 	}
 
 	public static void kelimeCozumle(String k) {
-		String dizi[] = null;
-		dizi = k.split(" ");
-		int d = 0;
+		String dizi[] =  k.split(" ");
+		List<List<String>> gecis = new ArrayList<List<String>>();
+		/*int d = 0;
 		Kelime[] cozumler = null;
-		String[][] gecis = new String[dizi.length][];
+	String[][] gecis = new String[dizi.length][];
 		while (d < dizi.length) {
 
 			cozumler = z.kelimeCozumle(dizi[d]);
 			gecis[d] = new String[cozumler.length];
 			for (int t = 0; t < cozumler.length; t++) {
-				// gecis[d][t] =cozumler[t];
+				//gecis[d][t] =cozumler[t];
+		
+		
 			}
 
 			d++;
 
-		}
+		}*/
+		for(String kel :dizi){
+		Kelime[] cozumler = z.kelimeCozumle(kel);
+		List<Kelime> cozum = Arrays.asList(cozumler);
+        gecis.addAll((Collection<?extends List<String>>)cozum);
+    }
 
-		render("Application/kelimeCozumle.html", cozumler);
+		render("Application/kelimeCozumle.html",gecis);
 	}
 
 	public static void asciDonustur(String k) {
