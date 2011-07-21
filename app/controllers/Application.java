@@ -49,8 +49,23 @@ public class Application extends Controller {
 
         render("Application/dosyadanOku.html", a);
     }
+    public static String düzenle(String k){
+        k=k.replace("..."," ");
+        k=k.replace("."," ");
+        k=k.replace("!"," ");
+        k=k.replace("?"," ");
+        k=k.replace(", "," ");
+        k=k.replace("/r"," ");
+        
+       
+       return k; 
+    }
 
     public static void heceler(String k) {
+        k=düzenle(k);
+       
+         System.out.println(k);
+       
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
         for (String kelime : dizi) {
@@ -62,6 +77,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeCozumle(String k) {
+        k= düzenle(k);
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
 
@@ -75,11 +91,13 @@ public class Application extends Controller {
     }
 
     public static void asciDonustur(String k) {
+       
         String l = z.asciiyeDonustur(k);
         render(l);
     }
 
     public static void oneriler(String k) {
+        k= düzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
         int a = 0;
@@ -100,6 +118,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeDenetle(String k) {
+        k= düzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
 
@@ -121,6 +140,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeAyristir(String k) {
+        k= düzenle(k);
         String[] dizi = k.split(" ");
         List<List<String[]>> ayrisimlar = new ArrayList<List<String[]>>();
         for (String kelime : dizi) {

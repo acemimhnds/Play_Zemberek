@@ -2,8 +2,10 @@
 
  
  <form action="@{Application.kullanicidanAl()}" method="GET">
-Text girelim:<input type="text"  name="cumle" /> 
-    <input type="submit"  />
+ <h3>Text girelim:</h3>
+  <textarea name="cumle" rows="10" cols="60"></textarea>
+
+ <input type="submit"  />
  </form> 
 <h3>Yada dosyadan yükleyelim:</h3> </br>
  <form action="@{Application.dosyadanOku()}" method="POST"
