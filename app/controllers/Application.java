@@ -49,7 +49,7 @@ public class Application extends Controller {
 
         render("Application/dosyadanOku.html", a);
     }
-    public static String düzenle(String k){
+    public static String duzenle(String k){
         k=k.replace("..."," ");
         k=k.replace("."," ");
         k=k.replace("!"," ");
@@ -62,7 +62,7 @@ public class Application extends Controller {
     }
 
     public static void heceler(String k) {
-        k=düzenle(k);
+        k=duzenle(k);
        
          System.out.println(k);
        
@@ -77,7 +77,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeCozumle(String k) {
-        k= düzenle(k);
+        k= duzenle(k);
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
 
@@ -97,7 +97,7 @@ public class Application extends Controller {
     }
 
     public static void oneriler(String k) {
-        k= düzenle(k);
+        k= duzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
         int a = 0;
@@ -118,7 +118,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeDenetle(String k) {
-        k= düzenle(k);
+        k= duzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
 
@@ -140,7 +140,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeAyristir(String k) {
-        k= düzenle(k);
+        k= duzenle(k);
         String[] dizi = k.split(" ");
         List<List<String[]>> ayrisimlar = new ArrayList<List<String[]>>();
         for (String kelime : dizi) {
