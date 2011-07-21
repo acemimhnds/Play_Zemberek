@@ -1,22 +1,28 @@
 package controllers;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Collection;
-
+import java.util.List;
+import play.*;
+import play.mvc.*;
+import java.util.*;
 import net.zemberek.erisim.Zemberek;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
 import net.zemberek.yapi.Kelime;
 import play.Logger;
 import play.data.validation.Required;
 import play.mvc.Controller;
+import com.sun.java.util.jar.pack.*;
 
 public class Application extends Controller {
     public static final Zemberek z = new Zemberek(new TurkiyeTurkcesi());
 
     public static void index() {
-
         render();
     }
 
@@ -25,7 +31,23 @@ public class Application extends Controller {
             flash.error("Aloo cümleyi girmedinn :)");
             index();
         }
-        render("Application/index.html", cumle);
+        render("Application/kullanicidanAl.html", cumle);
+    }
+
+    public static void dosyadanOku(String a, File dosyaadı) {
+        a = "";
+        try {
+            BufferedReader oku = new BufferedReader(new FileReader(dosyaadı));
+
+            while (oku.ready()) {
+                a += oku.readLine();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        render("Application/dosyadanOku.html", a);
     }
 
     public static void heceler(String k) {
