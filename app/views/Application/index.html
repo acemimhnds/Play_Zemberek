@@ -7,6 +7,13 @@
 
  <input type="submit"  />
  </form> 
+ #{if flash.error}
+    <p style="color:#c00">
+        ${flash.error}
+    </p>
+#{/if} 
+ 
+ 
 <h3>Yada dosyadan yükleyelim:</h3> </br>
  <form action="@{Application.dosyadanOku()}" method="POST"
       enctype="multipart/form-data">
@@ -17,11 +24,6 @@
 </form>
 
 
-#{if flash.error}
-    <p style="color:#c00">
-        ${flash.error}
-    </p>
-#{/if} 
 
 
 

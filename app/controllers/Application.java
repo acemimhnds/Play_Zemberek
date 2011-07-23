@@ -14,6 +14,8 @@ import java.util.*;
 import net.zemberek.erisim.Zemberek;
 import net.zemberek.tr.yapi.TurkiyeTurkcesi;
 import net.zemberek.yapi.Kelime;
+import net.zemberek.yapi.Kok;
+import net.zemberek.islemler.*;
 import play.Logger;
 import play.data.validation.Required;
 import play.mvc.Controller;
@@ -28,7 +30,7 @@ public class Application extends Controller {
 
     public static void kullanicidanAl(@Required String cumle) {
         if (validation.hasErrors()) {
-            flash.error("Aloo cümleyi girmedinn :)");
+            flash.error("Text girmeniz gerekiyor!");
             index();
         }
         render("Application/kullanicidanAl.html", cumle);
@@ -49,23 +51,22 @@ public class Application extends Controller {
 
         render("Application/dosyadanOku.html", a);
     }
-    public static String duzenle(String k){
-        k=k.replace("..."," ");
-        k=k.replace("."," ");
-        k=k.replace("!"," ");
-        k=k.replace("?"," ");
-        k=k.replace(", "," ");
-        k=k.replace("/r"," ");
-        
-       
-       return k; 
+
+    public static String duzenle(String k) {
+        // k = k.replaceAll("\\W", " ").replaceAll("\\s+", " ");;
+        k = k.replace("...", " ");
+        k = k.replace(". ", " ");
+        k = k.replace("! ", " ");
+        k = k.replace("? ", " ");
+        k = k.replace(", ", " ");
+        k = k.replace("'", " ");
+        k = k.replace("\r", " ");
+        return k;
     }
 
     public static void heceler(String k) {
-        k=duzenle(k);
-       
-         System.out.println(k);
-       
+        k = duzenle(k);
+
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
         for (String kelime : dizi) {
@@ -77,12 +78,12 @@ public class Application extends Controller {
     }
 
     public static void kelimeCozumle(String k) {
-        k= duzenle(k);
+        k = duzenle(k);
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
-
+        Kelime[] cozumler = null;
         for (String kel : dizi) {
-            Kelime[] cozumler = z.kelimeCozumle(kel);
+            cozumler = z.kelimeCozumle(kel);
             List<Kelime> cozum = Arrays.asList(cozumler);
             gecis.addAll((Collection<? extends List<String>>) cozum);
         }
@@ -91,13 +92,13 @@ public class Application extends Controller {
     }
 
     public static void asciDonustur(String k) {
-       
+
         String l = z.asciiyeDonustur(k);
         render(l);
     }
 
     public static void oneriler(String k) {
-        k= duzenle(k);
+        k = duzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
         int a = 0;
@@ -118,7 +119,7 @@ public class Application extends Controller {
     }
 
     public static void kelimeDenetle(String k) {
-        k= duzenle(k);
+        k = duzenle(k);
         String dizi[] = null;
         dizi = k.split(" ");
 
@@ -140,14 +141,33 @@ public class Application extends Controller {
     }
 
     public static void kelimeAyristir(String k) {
-        k= duzenle(k);
+        k = duzenle(k);
         String[] dizi = k.split(" ");
         List<List<String[]>> ayrisimlar = new ArrayList<List<String[]>>();
         for (String kelime : dizi) {
             ayrisimlar.add(z.kelimeAyristir(kelime));
         }
-        Logger.debug("Kelimeler ayrıştırıldı");
+
         render("Application/kelimeAyristir.html", ayrisimlar);
+    }
+
+    public static void kokBul(String k) {
+        k = duzenle(k);
+        String[] dizi = k.split(" ");
+        KokBulucu kok = z.kokBulucu();
+
+        List<List<String>> gecis = new ArrayList<List<String>>();
+
+        for (String kokk : dizi) {
+
+            String[] kokler = kok.stringKokBul(kokk);
+
+            List<String> koklerim = Arrays.asList(kokler);
+            gecis.add(koklerim);
+
+        }
+
+        render("Application/kokBul.html", gecis);
     }
 
 }

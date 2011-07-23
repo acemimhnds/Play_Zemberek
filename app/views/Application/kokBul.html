@@ -1,0 +1,10 @@
+#{extends 'main.html' /} #{set title:'Home' /}
+<h1>Kelime kokleri:</h1></br>
+
+<ul>
+#{list items:gecis, as:'koklerim'}
+<li>
+${koklerim.join('-')}
+</li>
+#{/list}
+</ul> 

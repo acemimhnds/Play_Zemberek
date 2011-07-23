@@ -10,7 +10,7 @@ import java.util.*;
 public class dsf extends Model {
     String kok;
     
-    public void dsf(String val){
+    public dsf(String val){
         this.kok=val;        
         
     }
