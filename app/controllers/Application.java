@@ -152,17 +152,17 @@ public class Application extends Controller {
     }
 
     public static void kokBul(String k) {
+
         k = duzenle(k);
         String[] dizi = k.split(" ");
         KokBulucu kok = z.kokBulucu();
 
         List<List<String>> gecis = new ArrayList<List<String>>();
-
+        List<String> koklerim = null;
         for (String kokk : dizi) {
 
             String[] kokler = kok.stringKokBul(kokk);
-
-            List<String> koklerim = Arrays.asList(kokler);
+            koklerim = Arrays.asList(kokler);
             gecis.add(koklerim);
 
         }
