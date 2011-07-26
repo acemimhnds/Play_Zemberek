@@ -181,7 +181,7 @@ public class Application extends Controller {
         for (int i = 0; i < dizi.length; i++) {
             kokler = kok.stringKokBul(dizi[i]);
             gecis[i] = kokler[0];
-            System.out.println(gecis[i]);
+
         }
         Map<String, Integer> kelimeSayi = new HashMap<String, Integer>();
         for (String kelime : gecis) {
@@ -190,10 +190,6 @@ public class Application extends Controller {
             } else {
                 kelimeSayi.put(kelime, kelimeSayi.get(kelime) + 1);
             }
-        }
-
-        for (String kelime : kelimeSayi.keySet()) {
-            System.out.println(kelime + ": " + kelimeSayi.get(kelime));
         }
 
         render("Application/sayiBul.html", kelimeSayi);
