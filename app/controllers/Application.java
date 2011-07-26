@@ -152,11 +152,9 @@ public class Application extends Controller {
     }
 
     public static void kokBul(String k) {
-
         k = duzenle(k);
         String[] dizi = k.split(" ");
         KokBulucu kok = z.kokBulucu();
-
         List<List<String>> gecis = new ArrayList<List<String>>();
         List<String> koklerim = null;
         for (String kokk : dizi) {
@@ -168,6 +166,38 @@ public class Application extends Controller {
         }
 
         render("Application/kokBul.html", gecis);
+
+    }
+
+    public static void sayiBul(String k) {
+        k = duzenle(k);
+        String[] dizi = k.split(" ");
+        KokBulucu kok = z.kokBulucu();
+        String[] gecis = null;
+        String[] kokler = null;
+
+        gecis = new String[dizi.length];
+
+        for (int i = 0; i < dizi.length; i++) {
+            kokler = kok.stringKokBul(dizi[i]);
+            gecis[i] = kokler[0];
+            System.out.println(gecis[i]);
+        }
+        Map<String, Integer> kelimeSayi = new HashMap<String, Integer>();
+        for (String kelime : gecis) {
+            if (kelimeSayi.get(kelime) == null) {
+                kelimeSayi.put(kelime, 1);
+            } else {
+                kelimeSayi.put(kelime, kelimeSayi.get(kelime) + 1);
+            }
+        }
+
+        for (String kelime : kelimeSayi.keySet()) {
+            System.out.println(kelime + ": " + kelimeSayi.get(kelime));
+        }
+
+        render("Application/sayiBul.html", kelimeSayi);
+
     }
 
 }
