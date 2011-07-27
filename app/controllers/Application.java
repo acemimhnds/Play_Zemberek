@@ -74,7 +74,7 @@ public class Application extends Controller {
                 if (z.hecele(kelime) != null)
                     hecelenmis = z.hecele(kelime);
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.error(e, "bir hata oluştu");
             }
             List<String> heceler = Arrays.asList(hecelenmis);
             gecis.add(heceler);
@@ -183,13 +183,12 @@ public class Application extends Controller {
         gecis = new String[dizi.length];
 
         for (int i = 0; i < dizi.length; i++) {
-
             kokler = kok.stringKokBul(dizi[i]);
             try {
-                if (kokler[0] != "")
+                if (!"".equals(kokler[0]))
                     gecis[i] = kokler[0];
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.error(e, "bir hata oluştu");
             }
         }
         Map<String, Integer> kelimeSayi = new HashMap<String, Integer>();
