@@ -66,11 +66,16 @@ public class Application extends Controller {
 
     public static void heceler(String k) {
         k = duzenle(k);
-
+        String[] hecelenmis = null;
         String dizi[] = k.split(" ");
         List<List<String>> gecis = new ArrayList<List<String>>();
         for (String kelime : dizi) {
-            String[] hecelenmis = z.hecele(kelime);
+            try {
+                if (z.hecele(kelime) != null)
+                    hecelenmis = z.hecele(kelime);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             List<String> heceler = Arrays.asList(hecelenmis);
             gecis.add(heceler);
         }
@@ -200,5 +205,4 @@ public class Application extends Controller {
         render("Application/sayiBul.html", kelimeSayi);
 
     }
-
 }
