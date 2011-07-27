@@ -175,16 +175,21 @@ public class Application extends Controller {
         KokBulucu kok = z.kokBulucu();
         String[] gecis = null;
         String[] kokler = null;
-
         gecis = new String[dizi.length];
 
         for (int i = 0; i < dizi.length; i++) {
-            kokler = kok.stringKokBul(dizi[i]);
-            gecis[i] = kokler[0];
 
+            kokler = kok.stringKokBul(dizi[i]);
+            try {
+                if (kokler[0] != "")
+                    gecis[i] = kokler[0];
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         Map<String, Integer> kelimeSayi = new HashMap<String, Integer>();
         for (String kelime : gecis) {
+
             if (kelimeSayi.get(kelime) == null) {
                 kelimeSayi.put(kelime, 1);
             } else {

@@ -7,9 +7,10 @@ GET     /                                       Application.index
 GET     /kullanıcı                              Aplication.kullanicidanAl
 GET     /hecele                                 Application.heceler
 GET     /ascii                                  Application.asciDonustur
-POST     /dosya                                  Application.dosyadanOku
+POST    /dosya                                  Application.dosyadanOku
 GET     /denetle                                Application.kelimeDenetle
 GET     /kokbul                                 Application.kokBul
+GET     /istatistik                             Appplication.sayiBul
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
