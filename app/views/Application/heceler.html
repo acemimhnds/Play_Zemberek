@@ -1,12 +1,13 @@
 #{extends 'main.html' /} #{set title:'Home' /}
 <h2><b>Heceleme sonuclari:</b></h2></br>
 <ul>
-#{list items:gecis, as:'heceler'}
+#{list items:hecelenmis, as:'heceler'}
 <li>
 ${heceler.join('-')}
 </li>
 #{/list}
 </ul> 
+<a href="@{Application.index()}">Back to form</a>
 
 
 
